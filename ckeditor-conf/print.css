@@ -1,0 +1,303 @@
+/*
+Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+
+body {
+	/* Font */
+	font-family: Avenir, sans-serif, Arial, Verdana, "Trebuchet MS";
+	font-size: 10px;
+
+	/* Text color */
+	color: black;
+
+	/* Remove the background color to make it transparent */
+	background-color: #fff;
+
+	margin: 1.5cm;
+
+	counter-reset: h2counter;
+	counter-reset: h3counter;
+	counter-reset: h4counter;
+	counter-reset: codeLineCounter;
+
+}
+
+.cke_editable {
+	font-size: 13px;
+	line-height: 1.6;
+
+	/* Fix for missing scrollbars with RTL texts. (#10488) */
+	word-wrap: break-word;
+}
+
+blockquote {
+	font-style: italic;
+	font-family: Georgia, Times, "Times New Roman", serif;
+	padding: 2px 0;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0;
+}
+
+.cke_contents_ltr blockquote {
+	padding-left: 20px;
+	padding-right: 8px;
+	border-left-width: 5px;
+}
+
+.cke_contents_rtl blockquote {
+	padding-left: 8px;
+	padding-right: 20px;
+	border-right-width: 5px;
+}
+
+p {
+	font-size: 1.2em !important;
+	font-weight: 250;
+
+}
+
+li {
+	font-size: 1.2em !important;
+	font-weight: 250;
+	/*
+	margin: 7px 0px;
+	line-height: 13pt;
+	*/
+}
+
+a {
+	color: #0782C1;
+}
+
+ol,
+ul,
+dl {
+	/* IE7: reset rtl list margin. (#7334) */
+	/* margin-right: 0px; */
+	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
+	padding: 0 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 20px;
+	margin-bottom: 0px;
+	font-weight: 500;
+}
+
+h1 {
+	font-size: 2.2em;
+	text-align: center;
+	font-weight: 500;
+	margin-bottom: 30px;
+	counter-reset: h2counter;
+}
+
+h2 {
+	font-size: 1.6em;
+	counter-reset: h3counter;
+}
+
+h2:before {
+	content: counter(h2counter) ".\0000a0\0000a0";
+	counter-increment: h2counter;
+}
+
+h3 {
+	font-size: 1.4em;
+	counter-reset: h4counter;
+}
+
+h3:before {
+	content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+	counter-increment: h3counter;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+h4:before {
+	content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+	counter-increment: h4counter;
+}
+
+h2+p,
+h3+p,
+h4+p {
+	margin-top: 2px;
+}
+
+h2+h3,
+h3+h4 {
+	margin-top: 4px;
+}
+
+hr {
+	border: 0px;
+	border-top: 1px solid #ccc;
+}
+
+img.right {
+	border: 1px solid #ccc;
+	float: right;
+	margin-left: 15px;
+	padding: 5px;
+}
+
+img.left {
+	border: 1px solid #ccc;
+	float: left;
+	margin-right: 15px;
+	padding: 5px;
+}
+
+pre {
+	white-space: pre-wrap;
+	/* CSS 2.1 */
+	word-wrap: break-word;
+	/* IE7 */
+	-moz-tab-size: 4;
+	tab-size: 4;
+}
+
+.marker {
+	background-color: Yellow;
+}
+
+span[lang] {
+	font-style: italic;
+}
+
+figure {
+	text-align: center;
+	border: solid 1px #ccc;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, 0.05);
+	padding: 10px;
+	margin: 10px 20px;
+	display: inline-block;
+}
+
+figure>figcaption {
+	text-align: center;
+	display: block;
+	/* For IE8 */
+}
+
+a>img {
+	padding: 1px;
+	margin: 1px;
+	border: none;
+	outline: 1px solid #0782C1;
+}
+
+table {
+	border-collapse: collapse;
+	page-break-inside: auto;
+}
+
+tr {
+	page-break-inside: avoid;
+	page-break-after: auto;
+}
+
+th,
+td {
+	border: 1px solid black;
+}
+
+th {
+	padding: 2px 2px;
+	font-weight: 500;
+	font-size: 10px;
+	;
+}
+
+td {
+	padding: 0px 6px;
+}
+
+td ol,
+td ul {
+	margin: 0px;
+	font-size: 10px;
+	;
+}
+
+td li {
+	font-size: 10px;
+	line-height: 10px;
+}
+
+
+td p {
+	padding: 0px;
+	margin: 4px 0px;
+	font-size: 10px;
+	line-height: 13px;
+}
+
+.code-block {
+	counter-reset: codeLineCounter;
+	font-family: monospace;
+	font-size: 10px;
+	line-height: 1.3em;
+	font-weight: 100;
+	color: #666;
+}
+
+.code-line:before {
+	content: counter(codeLineCounter) ".";
+	counter-increment: codeLineCounter;
+	display: inline-block;
+	width: 35px;
+	margin-left: 0;
+	margin-right: 15px;
+	text-align: right;
+	background-color: lightgray;
+}
+
+@media print {
+
+	body {
+		cursor: none;
+
+		selector {
+			cursor: none;
+		}
+	}
+
+	.code-line:before {
+		background-color: lightgray;
+	}
+
+	h1 {
+		font-size: 1.5em !important;
+	}
+
+	h2 {
+		font-size: 1.3em !important;
+	}
+
+	h3 {
+		font-size: 1.2em !important;
+	}
+
+	h4 {
+		font-size: 1.1em !important;
+	}
+
+	p,
+	li {
+		font-size: 1em !important;
+	}
+
+
+}

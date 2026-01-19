@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkDevice" >
+		<column name="silkDeviceID" type="I" pk="1" />
+		<column name="deviceToken" type="S" />
+		<column name="creationDate" type="D" />
+		<column name="lastAccess" type="D" />
+		<column name="agent" type="S" />
+		<column name="status" type="I" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+	<sqlSelect silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkDeviceID
+			from silkDevice
+			where deviceToken = $P{deviceToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkDeviceID
+			from silkDevice
+			where deviceToken = $P{deviceToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkDeviceID
+			from silkDevice
+			where deviceToken = $P{deviceToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkDeviceID
+			from silkDevice
+			where deviceToken = $P{deviceToken}
+		]]>
+	</sqlSelect>
+
+</orm>

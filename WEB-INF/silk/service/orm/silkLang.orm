@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkLang" >
+		<column name="silkLangID" type="I" pk="1" />
+		<column name="langID" type="S" />
+		<column name="langName" type="S" />
+		<column name="enName" type="S" />
+		<column name="status" type="I" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+	<sqlSelect silkDatabaseID="2" >
+		<![CDATA[
+			select
+				*
+			from silkLang
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="1" >
+		<![CDATA[
+			select
+				*
+			from silkLang
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="3" >
+		<![CDATA[
+			select
+				*
+			from silkLang
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="4" >
+		<![CDATA[
+			select
+				*
+			from silkLang
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="systemLang" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				langID,
+				langName,
+				enName
+			from silkLang
+			order by langName
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="systemLang" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				langID,
+				langName,
+				enName
+			from silkLang
+			order by langName
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="systemLang" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				langID,
+				langName,
+				enName
+			from silkLang
+			order by langName
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="systemLang" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				langID,
+				langName,
+				enName
+			from silkLang
+			order by langName
+		]]>
+	</sqlSelect>
+
+	<sqlOperation silkDatabaseID="2" name="cleanLang" >
+		<![CDATA[
+			delete from silkLang
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="cleanLang" >
+		<![CDATA[
+			delete from silkLang
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="cleanLang" >
+		<![CDATA[
+			delete from silkLang
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="cleanLang" >
+		<![CDATA[
+			delete from silkLang
+		]]>
+	</sqlOperation>
+
+</orm>

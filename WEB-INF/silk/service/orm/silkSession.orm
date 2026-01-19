@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkSession" >
+		<column name="silkSessionID" type="I" pk="1" />
+		<column name="silkAccessID" type="I" secure="1" />
+		<column name="silkUserID" type="I" secure="1" />
+		<column name="ipAddress" type="S" />
+		<column name="httpSession" type="S" />
+		<column name="sessionToken" type="S" />
+		<column name="sessionType" type="S" />
+		<column name="sessionDate" type="D" />
+		<column name="lastTransactionDate" type="D" />
+		<column name="deviceType" type="S" />
+		<column name="userAgent" type="S" />
+		<column name="disabled" type="I" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+	<sqlSelect silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+			and disabled=0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+			and disabled=0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+			and disabled=0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+			and disabled=0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkSessionToken" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkSessionToken" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkSessionToken" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkSessionToken" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkUserID
+			from silkSession
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="fullList" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				*
+			from silkSession
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="fullList" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				*
+			from silkSession
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="fullList" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				*
+			from silkSession
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="fullList" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				*
+			from silkSession
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkAccessSessionToken" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				sessionToken
+			from silkSession
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+			and timestampadd(MINUTE,5,lastTransactionDate) > now()
+			limit 1
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkAccessSessionToken" silkDatabaseID="1" >
+		<![CDATA[
+			select top 1
+				sessionToken
+			from silkSession
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+			and dateAdd(minute,5,lastTransactionDate) > getDate()
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkAccessSessionToken" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				sessionToken
+			from silkSession
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+			and timestampadd(MINUTE,5,lastTransactionDate)>CURRENT_TIMESTAMP
+			limit 1
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="checkAccessSessionToken" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				sessionToken
+			from silkSession
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+			and timestampadd(MINUTE,5,lastTransactionDate) > CURRENT_TIMESTAMP
+			fetch first 10 row only
+		]]>
+	</sqlSelect>
+
+	<sqlOperation silkDatabaseID="2" name="sessionBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = now()
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="sessionBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = getDate()
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="sessionBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="sessionBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="2" name="disableToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = now()
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="disableToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = getDate()
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="disableToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="disableToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where sessionToken = $P{sessionToken}
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="2" name="disableAccessToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = now()
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="disableAccessToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = getDate()
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="disableAccessToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="disableAccessToken" >
+		<![CDATA[
+			update silkSession set
+				disabled = 1,
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="2" name="sessionAccessBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = now()
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="sessionAccessBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = getDate()
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="sessionAccessBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="sessionAccessBeat" >
+		<![CDATA[
+			update silkSession set
+				lastTransactionDate = CURRENT_TIMESTAMP
+			where silkAccessID = $P{silkAccessID}
+			and disabled=0
+		]]>
+	</sqlOperation>
+
+</orm>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkLog" >
+		<column name="silkLogID" type="I" pk="1" />
+		<column name="tableName" type="S" />
+		<column name="pkValue" type="I" />
+		<column name="status" type="I" />
+		<column name="operationAction" type="S" />
+		<column name="operationDate" type="D" />
+		<column name="operationUser" type="I" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+</orm>

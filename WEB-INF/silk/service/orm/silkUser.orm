@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkTestUser" >
+		<column name="silkUserID" type="I" pk="1" />
+		<column name="firstName" type="S" />
+		<column name="middleName" type="S" />
+		<column name="lastName" type="S" />
+		<column name="emailAddress" type="S" />
+		<column name="password" type="S" />
+		<column name="mfaType" type="I" />
+		<column name="mfaEmailToken" type="S" />
+		<column name="mfaTotpSecret" type="S" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" value="dbo." />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+	<sqlSelect name="web-authentication" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkUserID,
+				concat(firstName,' ',middleName,' ',lastname) as fullName,
+				password,
+				roleList
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkUserID,
+				firstName+' '+lastname as fullName,
+				password,
+				roleList
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkUserID,
+				concat(firstName,' ',middleName,' ',lastname) as fullName,
+				password,
+				roleList
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkUserID,
+				firstName||' '||middleName||' '||lastname as fullName,
+				password,
+				roleList
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication-mfa" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkUserID,
+				concat(firstName,' ',lastname) as fullName,
+				password,
+				roleList,
+				mfaType,
+				mfaEmailToken,
+				mfaTotpSecret
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication-mfa" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkUserID,
+				firstName+' '+lastname as fullName,
+				password,
+				roleList,
+				mfaType,
+				mfaEmailToken,
+				mfaTotpSecret
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication-mfa" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkUserID,
+				concat(firstName,' ',lastname) as fullName,
+				password,
+				roleList,
+				mfaType,
+				mfaEmailToken,
+				mfaTotpSecret
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="web-authentication-mfa" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkUserID,
+				firstName||' '||lastname as fullName,
+				password,
+				roleList,
+				mfaType,
+				mfaEmailToken,
+				mfaTotpSecret
+			from silkUser
+			where lower(emailAddress)=$P{userName}
+		]]>
+	</sqlSelect>
+
+	<sqlOperation silkDatabaseID="2" name="setEmailToken" >
+		<![CDATA[
+			update sysUser set
+				mfaEmailToken = left(
+					convert(varchar,round(rand()*10,0))+
+					convert(varchar,round(rand()*10,0))+
+					convert(varchar,round(rand()*10,0))+
+					convert(varchar,round(rand()*10,0))+
+					convert(varchar,round(rand()*10,0))+
+					convert(varchar,round(rand()*10,0))
+				,6)
+			where sysUserID = $P{loginUserID};
+			
+			insert into dbo.silkEmailSent (
+				projectUUID,
+				langID,
+				actionTitle,
+				sentTo,
+				variables,
+				priority
+			)
+			select
+				'9a5fb4b6-f1ea-4ae5-a894-faaa933b4cae' as projectUUID, -- MFA Email Token
+				langID,
+				'Auth Token' as actionTitle,
+				emailAddress as sentTo,
+				'fullName='+sdaUtils.dbo.getName(firstName,middleName,lastName)+'<|>'+
+				'emailToken='+mfaEmailToken as variables,
+				1 as priority
+			from dbo.sysUser
+			where sysUserID = $P{loginUserID};
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="setEmailToken" >
+		<![CDATA[
+			update sysUser set
+				mfaEmailToken = left(
+					concat(
+						floor(random()*10),
+						floor(random()*10),
+						floor(random()*10),
+						floor(random()*10),
+						floor(random()*10),
+						floor(random()*10)
+					)
+				,6)
+			where sysUserID = $P{loginUserID};
+			
+			insert into dbo.silkEmailSent (
+				projectUUID,
+				langID,
+				actionTitle,
+				sentTo,
+				variables,
+				priority
+			)
+			select
+				'9a5fb4b6-f1ea-4ae5-a894-faaa933b4cae' as projectUUID, -- MFA Email Token
+				langID,
+				'Auth Token' as actionTitle,
+				emailAddress as sentTo,
+				'fullName='+sdaUtils.dbo.getName(firstName,middleName,lastName)+'<|>'+
+				'emailToken='+mfaEmailToken as variables,
+				1 as priority
+			from dbo.sysUser
+			where sysUserID = $P{loginUserID};
+		]]>
+	</sqlOperation>
+
+</orm>

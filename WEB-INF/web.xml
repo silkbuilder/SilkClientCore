@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://java.sun.com/xml/ns/javaee"
+	xmlns:web="https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="
+		https://java.sun.com/xml/ns/javaee
+		https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	id="WebApp_ID" version="2.5" >
+
+	<welcome-file-list>
+		<welcome-file>index.srv</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<display-name>SilkBuilder Framework</display-name>
+	<description>SilkBuilder Framework</description>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>authentication</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>authentication</servlet-name>
+		<url-pattern>/auth/*</url-pattern>
+	</servlet-mapping>
+	<!-- End Authentication  -->
+
+	<!--  Service  -->
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	<!-- End Service  -->
+
+	<!--  Link  -->
+	<servlet>
+		<servlet-name>link</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>link</servlet-name>
+		<url-pattern>/link/*</url-pattern>
+	</servlet-mapping>
+	<!-- End Link  -->
+	
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.srv</url-pattern>
+		</jsp-property-group>
+	</jsp-config>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+</web-app>

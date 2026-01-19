@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task.xsd
+	"
+>
+	
+	<task:annotation-driven/>
+	<context:property-placeholder location="WEB-INF/application.properties" />
+	
+	<bean id="contextApplicationContextProvider" class="com.oopsclick.silk.utils.ApplicationContextProvider" >
+	</bean>
+	
+	<bean id="ObjectStorage" class="com.oopsclick.silk.storage.ObjectStorage" >
+	</bean>
+	
+	<bean id="SilkObjectLoader" class="com.oopsclick.silk.storage.ObjectLoader" >
+	</bean>
+
+	<bean id="CryptLoader" class="com.oopsclick.silk.security.CryptLoader" >
+		<constructor-arg name="secure1" value="" />
+		<constructor-arg name="secure2" value="" />
+		<constructor-arg name="secure3" value="" />
+	</bean>
+
+	<bean id="mySQLSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="url" value="" />
+		<property name="driverClassName" value="" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="SilkSqlController" class="com.oopsclick.silk.dbo.SqlController" >
+		<property name="dataSource" ref="mySQLSource" />
+		<property name="translatorIn" value="writeLanguage" />
+		<property name="translatorOut" value="readLanguage" />
+		<property name="silkDatabaseID" value="" />
+	</bean>
+	
+</beans>

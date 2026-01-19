@@ -1,0 +1,211 @@
+:root {
+	--silk-header-bg: var(--bs-primary);
+}
+
+/* --------------------------------------------------------------------------- */
+
+.silk-screen-header {
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
+
+}
+
+.silk-screen-header-title {
+	color: var(--bs-body-color);
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Pages: Vertical line separating the pages. 
+ */
+.silk-page-border {
+	border-right: 4px solid var(--bs-body-bg) !important;
+}
+
+/*
+ * Pages: Header's background and text color;
+ */
+.silk-page .silk-navbar {
+	color: var(--bs-white);
+	background-color: var(--silk-header-bg);
+}
+
+.silk-header-bg {
+	background-color: var(--silk-header-bg);
+}
+
+/*
+ * Pages: Header's icons color.
+ */
+.silk-page .silk-navbar-button,
+.silk-page.silk-navbar-button:focus {
+	color: var(--bs-white);
+}
+
+.silk-page .silk-navbar-button:hover {
+	color: var(--bs-white);
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Table
+ */
+.silk-table-top-header,
+.silk-table-data thead {
+	background-color: var(--bs-body-bg);
+}
+
+.silk-table-header-alone {
+	border-bottom: 2px solid var(--bs-gray-500);
+	padding-bottom: 2px;
+}
+
+.silk-table-header th {
+	border-top: 1px solid var(--bs-gray-500) !important;
+	border-bottom: 2px solid var(--bs-gray-500) !important;
+}
+
+.table-search div {
+	color: var(--bs-gray);
+	border-color: var(--bs-gray);
+}
+
+.table-search input {
+	border-color: var(--bs-gray);
+}
+
+.table-search input:focus {
+	border-color: var(--bs-gray);
+	box-shadow: unset;
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Input: Background and text color of input in read-only mode.
+ */
+
+.silk-input {
+	margin-bottom: 5px;
+}
+
+.form-control.silk-input-text {
+	background-color: var(--bs-gray-200);
+	color: var(--light);
+	border: none;
+}
+
+/*
+ * Input: Color mark for required data.
+ */
+.silk-input-required {
+	border-bottom: 3px solid var(--bs-primary) !important;
+}
+
+/*
+ * Input: Color mark for missing data.
+ */
+.silk-input-missing {
+	border-bottom: 3px solid var(--bs-red) !important;
+}
+
+/*
+ * Input: Color mark for error in data.
+ */
+.silk-input-error {
+	border-bottom: 3px solid var(--bs-orange) !important;
+}
+
+/*
+ * Upload file drag and drop area
+ */
+.silk-input-drop {
+	color: gray;
+	font-size: 1.2em;
+	border: 1px dashed gray !important;
+	background-color: transparent;
+}
+
+/*
+ * Input button
+ */
+.silk-input-value[type=button] {
+	background-color: var(--bs-gray-200);
+}
+
+/*
+ * Input code
+ */
+.silk-input-code {
+	background-color: var(--bs-gray-200);
+	border: 0px;
+	padding: 0px;
+}
+
+form .cm-gutters,
+form .cm-gutterElement,
+form .cm-line {
+	background-color: var(--bs-gray-200) !important;
+	border-right: 0px !important;
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Group: Defines the style for a group. This also applies to the table title.
+ */
+.silk-group-title-label,
+.silk-table-title-label {
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Tabs
+ */
+.silk-nav-tabs .silk-nav-link {
+	color: var(--bs-gray-600);
+}
+
+.silk-nav-tabs .silk-nav-link:hover {
+	color: var(--bs-gray-700);
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Modal: Dialog button's color. If not included the primary color is used.
+ */
+.modal .silk-navbar-button,
+.modal .silk-navbar-button:focus {
+	color: var(--bs-gray-600);
+}
+
+.modal .silk-navbar-button:hover {
+	color: var(--bs-gray-700);
+}
+
+.modal .nav-link.active {
+	background-color: #52575C;
+	border-bottom-color: transparent;
+}
+
+/* --------------------------------------------------------------------------- */
+
+/*
+ * Horizontal line color and style
+ */
+hr {
+	border: 1px solid #999999;
+	margin: 10px 0px;
+}
+
+/* --------------------------------------------------------------------------- */
+.preloader {
+	/* background-image: url(https://media.vividfaith.com/vf/vf-animation.gif); */
+	/* background-color: #fff; */
+}

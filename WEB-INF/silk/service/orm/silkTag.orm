@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE ormObject>
+<orm >
+
+	<table name="silkTag" >
+		<column name="silkTagID" type="I" pk="1" />
+		<column name="groupName" type="S" />
+		<column name="tagName" type="S" />
+		<column name="tagType" type="I" />
+		<column name="tagIntValue" type="I" />
+		<column name="content" type="S" />
+		<column name="position" type="I" />
+	</table>
+
+	<schema silkDatabaseID="2" />
+	<schema silkDatabaseID="1" />
+	<schema silkDatabaseID="3" />
+	<schema silkDatabaseID="4" />
+
+	<sqlSelect name="appTags" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				tagName,
+				$T{content} as content
+			from silkTag
+			and tagName in ($V{tagList})
+			union
+				select
+				tagName,
+				$T{content} as content
+			from silkTag
+			where silkSystemID = 0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="appTags" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				tagName,
+				$T{content} as content
+			from silkTag
+			and tagName in ($V{tagList})
+			union
+				select
+				tagName,
+				$T{content} as content
+			from silkTag
+			where silkSystemID = 0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="appTags" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				tagName,
+				$T{content} as content
+			from silkTag
+			and tagName in ($V{tagList})
+			union
+				select
+				tagName,
+				$T{content} as content
+			from silkTag
+			where silkSystemID = 0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="appTags" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				tagName,
+				$T{content} as content
+			from silkTag
+			and tagName in ($V{tagList})
+			union
+				select
+				tagName,
+				$T{content} as content
+			from silkTag
+			where silkSystemID = 0
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="variableList" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				value,
+				$T{label} as label,
+				keyValue
+			from silkVariable
+			where groupName = $P{groupName}
+			order by position
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="variableList" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				value,
+				$T{label} as label,
+				keyValue
+			from silkVariable
+			where groupName = $P{groupName}
+			order by position
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="variableList" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				value,
+				$T{label} as label,
+				keyValue
+			from silkVariable
+			where groupName = $P{groupName}
+			order by position
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="variableList" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				value,
+				$T{label} as label,
+				keyValue
+			from silkVariable
+			where groupName = $P{groupName}
+			order by position
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="tagList" silkDatabaseID="2" >
+		<![CDATA[
+			select
+				silkTagID,
+				case
+					when tagType=0
+					then concat(tagType,tagName)
+					else concat(groupName,tagIntValue)
+				end as tagUnique
+			from silkTag
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="tagList" silkDatabaseID="1" >
+		<![CDATA[
+			select
+				silkTagID,
+				case
+					when tagType=0
+					then concat(tagType,tagName)
+					else concat(groupName,tagIntValue)
+				end as tagUnique
+			from silkTag
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="tagList" silkDatabaseID="3" >
+		<![CDATA[
+			select
+				silkTagID,
+				case
+					when tagType=0
+					then concat(tagType,tagName)
+					else concat(groupName,tagIntValue)
+				end as tagUnique
+			from silkTag
+		]]>
+	</sqlSelect>
+
+	<sqlSelect name="tagList" silkDatabaseID="4" >
+		<![CDATA[
+			select
+				silkTagID,
+				case
+					when tagType=0
+					then tagType || tagName
+					else groupName || tagIntValue
+				end as tagUnique
+			from silkTag
+		]]>
+	</sqlSelect>
+
+	<sqlOperation silkDatabaseID="2" name="cleanTags" >
+		<![CDATA[
+			delete from silkTag
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="1" name="cleanTags" >
+		<![CDATA[
+			delete from silkTag
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="3" name="cleanTags" >
+		<![CDATA[
+			delete from silkTag
+		]]>
+	</sqlOperation>
+
+	<sqlOperation silkDatabaseID="4" name="cleanTags" >
+		<![CDATA[
+			delete from silkTag
+		]]>
+	</sqlOperation>
+
+</orm>
