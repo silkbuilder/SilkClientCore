@@ -35,18 +35,6 @@
 	background-color: var(--silk-header-bg);
 }
 
-/*
- * Pages: Header's icons color.
- */
-.silk-page .silk-navbar-button,
-.silk-page.silk-navbar-button:focus {
-	color: var(--bs-white);
-}
-
-.silk-page .silk-navbar-button:hover {
-	color: var(--bs-white);
-}
-
 /* --------------------------------------------------------------------------- */
 
 /*
@@ -178,6 +166,39 @@ form .cm-line {
 /* --------------------------------------------------------------------------- */
 
 /*
+ * Button
+ */
+ 
+ /*
+  * Color of an icon of a silk-navbar-button in a page.
+  * If not included the primary color is used.
+  */
+ /*
+.silk-page .silk-navbar-button,
+.silk-page .silk-navbar-button:focus {
+	color: var(--bs-dark);
+}
+
+.silk-page .silk-navbar-button:hover {
+	color: var(--bs-dark);
+}
+*/
+
+/*
+ * Color of an icon of a silk-navbar-button in a navbar.
+ */
+ /*
+.navbar .silk-navbar-button,
+.navbar .silk-navbar-button:focus {
+	color: var(--bs-white);
+}
+
+.navbar .silk-navbar-button:hover {
+	color: var(--bs-white);
+}
+*/
+
+/*
  * Modal: Dialog button's color. If not included the primary color is used.
  */
 .modal .silk-navbar-button,
@@ -193,6 +214,7 @@ form .cm-line {
 	background-color: #52575C;
 	border-bottom-color: transparent;
 }
+
 
 /* --------------------------------------------------------------------------- */
 

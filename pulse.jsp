@@ -40,7 +40,7 @@
 			 * Disables accessToken and http session
 			 */
 			silkSession.disableAccessTocken(silkSessionToken);
-			session.setAttribute("accessToken","NO_SESSION");
+			session.setAttribute("silkSessionToken","NO_SESSION");
 			
 		}else{
 			

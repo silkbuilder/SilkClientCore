@@ -204,7 +204,7 @@ BEGIN
 	-- -----------
 	-- Finds the position of the open lang tag.
 	-- -----------
-	set startPos = instr(startTag,oldText);
+	set startPos = instr(oldText,startTag);
 
 	-- -----------
 	-- If open lang tag does not exist the new languate is added to the end and returns.

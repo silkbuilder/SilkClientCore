@@ -64,30 +64,6 @@ body>.screen {
 	pointer-events: auto;
 }
 
-.silk-page .silk-navbar-button,
-.silk-page .silk-navbar-button:hover,
-.silk-page .silk-navbar-button:focus,
-.navbar .silk-navbar-button,
-.navbar .silk-navbar-button:hover,
-.navbar .silk-navbar-button:focus {
-	margin: 0px;
-	text-decoration: none;
-	font-size: 1rem;
-	border: 0px !important;
-}
-
-.navbar .silk-navbar-button:is(.btn-link),
-.navbar .silk-navbar-button:hover:is(.btn-link),
-.navbar .silk-navbar-button:focus:is(.btn-link) {
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.silk-home-button,
-.silk-logout-button {
-	cursor: pointer;
-}
-
 .silk-page .silk-navbar-right,
 .silk-page .silk-navbar-left,
 .modal .silk-navbar-right {
@@ -98,14 +74,6 @@ body>.screen {
 
 .modal .silk-navbar-right {
 	margin-top: -6px;
-}
-
-.modal .silk-navbar-button,
-.modal .silk-navbar-button:hover,
-.modal .silk-navbar-button:focus {
-	padding: 2px 0px 0px 0px;
-	margin: 0px;
-	text-decoration: none;
 }
 
 .silk-navbar .nav-tabs-wrapper {
@@ -226,6 +194,16 @@ body>.screen {
 	border: 0px;
 }
 
+.silk-form-dialog-top {
+	padding-bottom: 30px;
+	border: 0px;
+}
+
+.silk-form-dialog-bottom {
+	padding-top: 30px;
+	border: 0px;
+}
+
 .silk-form-dialog-title {
 	font-size: 1.3em;
 }
@@ -249,6 +227,11 @@ body>.screen {
 
 /* Input ================================================================== */
 
+input[type="checkbox"] {
+	width: 18px;
+	height: 18px;
+}
+
 .silk-input-box-options {
 	pointer-events: none;
 }
@@ -260,6 +243,10 @@ body>.screen {
 .silk-input-box-checkbox.silk-full-width {
 	padding: 3px 3px 3px 25px;
 	text-indent: -23px;
+}
+
+.silk-input-box-checkbox.silk-full-width .silk-input-text {
+	padding-left: 25px;
 }
 
 .silk-input-box-checkbox.silk-partial-width {
@@ -547,6 +534,60 @@ body>.screen {
 	color: none;
 }
 
+/* Button ================================================================== */
+
+.btn {
+	margin: 2px;
+}
+
+.silk-button-icon {
+	margin-left: 4px;
+	margin-right: 4px;	
+}
+
+.silk-button-label {
+	margin-left: 2px;
+	margin-right: 2px;	
+}
+
+.silk-page .silk-navbar-button,
+.silk-page .silk-navbar-button:hover,
+.silk-page .silk-navbar-button:focus {
+	margin: 0px 2px 0px 2px;
+	text-decoration: none;
+	font-size: 1.2rem; 
+	border: 0px !important;
+}
+
+.navbar .silk-navbar-button,
+.navbar .silk-navbar-button:hover,
+.navbar .silk-navbar-button:focus {
+	margin: 0px 2px 0px 2px;
+	text-decoration: none;
+	font-size: 1rem; 
+	border: 0px !important;
+}
+
+.navbar .silk-navbar-button:is(.btn-link),
+.navbar .silk-navbar-button:hover:is(.btn-link),
+.navbar .silk-navbar-button:focus:is(.btn-link) {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.modal .silk-navbar-button,
+.modal .silk-navbar-button:hover,
+.modal .silk-navbar-button:focus {
+	padding: 2px 0px 0px 0px;
+	margin: 0px;
+	text-decoration: none;
+}
+
+.silk-home-button,
+.silk-logout-button {
+	cursor: pointer;
+}
+
 /* Tile ================================================================== */
 
 .silk-tile-cell {
@@ -577,10 +618,6 @@ body>.screen {
 
 .swal2-actions .btn {
 	margin: 4px;
-}
-
-.btn {
-	margin: 2px
 }
 
 .silk-help {

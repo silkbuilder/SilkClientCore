@@ -1,11 +1,14 @@
-<%@ page import="com.oopsclick.silk.dbo.*"%><%
+<%@ page import="
+		com.oopsclick.silk.dbo.DataProvider,
+		com.oopsclick.silk.utils.SilkPath
+	"
+%><%
 	
 	/*
 	 * Loading Device Token
 	 */
 	String accessToken = request.getHeader("accessToken");
 	String sessionToken = (String) session.getAttribute("sessionToken");
-	String contextPath = (String) session.getAttribute("contextPath");
 	
 	if( accessToken!=null ){
 		/*
@@ -35,6 +38,8 @@
 	/*
 	 * Redirect to context path
 	 */
+	String contextPath = SilkPath.getContextPath(request);
+
 	if( contextPath==null ) contextPath="/";
 	response.sendRedirect(contextPath);
 	
