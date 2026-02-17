@@ -187,7 +187,7 @@ form .cm-line {
 /*
  * Color of an icon of a silk-navbar-button in a navbar.
  */
- /*
+ 
 .navbar .silk-navbar-button,
 .navbar .silk-navbar-button:focus {
 	color: var(--bs-white);
@@ -196,7 +196,7 @@ form .cm-line {
 .navbar .silk-navbar-button:hover {
 	color: var(--bs-white);
 }
-*/
+
 
 /*
  * Modal: Dialog button's color. If not included the primary color is used.

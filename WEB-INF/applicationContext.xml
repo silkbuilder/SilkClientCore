@@ -34,17 +34,14 @@
 	</bean>
 
 	<bean id="mySQLSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-		<property name="url" value="" />
 		<property name="driverClassName" value="" />
+		<property name="url" value="" />
 		<property name="username" value="" />
 		<property name="password" value="" />
 	</bean>
 	
 	<bean id="SilkSqlController" class="com.oopsclick.silk.dbo.SqlController" >
 		<property name="dataSource" ref="mySQLSource" />
-		<property name="translatorIn" value="writeLanguage" />
-		<property name="translatorOut" value="readLanguage" />
-		<property name="silkDatabaseID" value="" />
 	</bean>
 	
 </beans>
