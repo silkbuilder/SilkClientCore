@@ -108,10 +108,10 @@
 		String[] lines = FileTool.readFile(realPath+"index.jsp").split("\n");
 		for( String line : lines ){
 			if( line.contains("String menuLink") && !menuLink.isEmpty() ){
-				line = "\tString menuLink = \""+menuLink+".jsp\";";
+				line = "\tString menuLink = \""+menuLink+"\";";
 			}
 			if( line.contains("String loginLink") && !loginLink.isEmpty() ){
-				line = "\tString loginLink = \""+loginLink+".srv\";";
+				line = "\tString loginLink = \""+loginLink+"\";";
 			}
 			indexCode += line+"\n";
 		}
