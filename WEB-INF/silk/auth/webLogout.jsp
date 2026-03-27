@@ -8,7 +8,7 @@
 	 * Loading Device Token
 	 */
 	String accessToken = request.getHeader("accessToken");
-	String sessionToken = (String) session.getAttribute("sessionToken");
+	String sessionToken = (String) session.getAttribute("silkSessionToken");
 	
 	if( accessToken!=null ){
 		/*

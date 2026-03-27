@@ -39,15 +39,17 @@
 			/*
 			 * Disables accessToken and http session
 			 */
-			silkSession.disableAccessTocken(silkSessionToken);
+			silkSession.disableAccessTocken(silkSessionToken, session);
 			session.setAttribute("silkSessionToken","NO_SESSION");
 			
-		}else{
+		} 
+			
+		if(mode.equals("live")){
 			
 			/*
 			 * Updates the lastTransactionDate
 			 */
-			silkSession.sessionBeat(silkSessionToken);
+			silkSession.sessionBeat(silkSessionToken, session);
 			
 		}
 	}	
