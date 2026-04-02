@@ -527,6 +527,16 @@
 		<attribute>
 			<name>confirmTarget</name>
 		</attribute>
+		<attribute>
+			<name>action</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>target</name>
+		</attribute>
+		<attribute>
+			<name>method</name>
+		</attribute>		
 	</tag>
 
 	<tag>
