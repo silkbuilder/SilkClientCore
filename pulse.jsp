@@ -39,7 +39,7 @@
 			/*
 			 * Disables accessToken and http session
 			 */
-			silkSession.disableAccessTocken(silkSessionToken, session);
+			silkSession.disableAccessToken(silkSessionToken, session);
 			session.setAttribute("silkSessionToken","NO_SESSION");
 			
 		} 
