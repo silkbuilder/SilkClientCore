@@ -28,8 +28,8 @@
 	</bean>
 
 	<bean id="CryptLoader" class="com.oopsclick.silk.security.CryptLoader" >
-		<constructor-arg name="secure1" value="" />
-		<constructor-arg name="secure2" value="" />
+		<constructor-arg name="secure1" value="3rUh8FCVcXrCCMIyDTNrvB2SIPfoB0nQkInnXSr5P8g763tg" />
+		<constructor-arg name="secure2" value="BBGYDp4kGeCEppvTeDQr" />
 		<constructor-arg name="secure3" value="" />
 		<constructor-arg name="secure4" value="" />
 	</bean>

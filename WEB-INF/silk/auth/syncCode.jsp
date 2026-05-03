@@ -65,11 +65,33 @@
 	JsonQuery jq = new JsonQuery(code);
 
 	/*
-	 * Define clean status
+	 * Define clean status from system
 	 */
 	boolean clean = jq.getBoolean("$.system.clean");
 
-	/* ==========================================================
+	/* ----------------------------------------------------------
+	 * Container List creates project indentifier file
+	 */
+	List<String> containerList = jq.getList("$.containerList");
+	for (Object item : containerList) {
+
+		Map<String,String> map = (Map<String,String>) item;
+
+		String containerID = map.get("containerID");
+		String containerName = map.get("containerName");
+		String cleanContainer = map.get("clean");
+
+		if( cleanContainer.equals("1") ){
+			FileTool.createCleanFolder(silkPath, containerID);
+		}else{
+			FileTool.createFolder(silkPath+containerID);
+		}
+
+		FileTool.writeFile(silkPath, containerName+".conf", containerID );
+	}
+	
+	
+	/* ----------------------------------------------------------
 	 * System
 	 */
 	if( clean ){
@@ -135,27 +157,6 @@
 		}
 	}
 	
-	/* ----------------------------------------------------------
-	 * Container List
-	 */
-	List<String> containerList = jq.getList("$.containerList");
-	for (Object item : containerList) {
-
-		Map<String,String> map = (Map<String,String>) item;
-
-		String containerID = map.get("containerID");
-		String containerName = map.get("containerName");
-		String cleanContainer = map.get("clean");
-
-		if( cleanContainer.equals("1") ){
-			FileTool.createCleanFolder(silkPath, containerID);
-		}else{
-			FileTool.createFolder(silkPath+containerID);
-		}
-
-		FileTool.writeFile(silkPath, containerName+".conf", containerID );
-	}
-
 	/* ----------------------------------------------------------
 	 * Code List
 	 */

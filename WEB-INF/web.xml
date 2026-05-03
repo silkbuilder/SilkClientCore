@@ -17,11 +17,16 @@
 	<display-name>SilkBuilder Framework</display-name>
 	<description>SilkBuilder Framework</description>
 
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 
+	<!--  Authentication  -->
 	<servlet>
 		<servlet-name>authentication</servlet-name>
 		<servlet-class>
@@ -66,14 +71,56 @@
 	</servlet-mapping>
 	<!-- End Link  -->
 	
+	<!--  Link  -->
+	<servlet>
+		<servlet-name>mcptool</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>mcptool</servlet-name>
+		<url-pattern>/mcptool/*</url-pattern>
+	</servlet-mapping>
+	<!-- End Link  -->
+	
+	
+	<!--  Link  -->
+
+	<!--
+	<servlet>
+		<servlet-name>mcp</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+	-->
+	
+	<servlet>
+		<servlet-name>mcpServlet</servlet-name>
+		<servlet-class>
+			com.oopsclick.silk.mcp.delegate.McpServletDelegate
+        </servlet-class>
+		<load-on-startup>5</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mcpServlet</servlet-name>
+		<url-pattern>/mcp/*</url-pattern>
+	</servlet-mapping>
+ 
+	<!-- End Link  -->
+	
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.srv</url-pattern>
+			<url-pattern>*.mcp</url-pattern>
 		</jsp-property-group>
 	</jsp-config>
-	
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+
 
 </web-app>
