@@ -57,7 +57,7 @@
 	 */
 	String code = Http.getRequestBody(request);
 	code = Tool64.base64toString(code);
-	//System.out.println(body);
+	//System.out.println(code);
     
 	/*
 	 * Load code into a JsonQuery object
@@ -272,57 +272,56 @@
 	 * Email Tamplates
 	 * Verifies it is pro version
 	 */
-	File file = new File(realPath+"WEB-INF/silk/SilkBuilderIDE/silkDeveloper.orm");
-	if( file.exists() ){
-		DataProvider mailDP = new DataProvider("/../silk/service/orm/silkEmail", session);
-	
-		if( clean ){
-			mailDP.exec("cleanTemplate");
-		}
-	
-		mailDP.select("templateList");
-	
-		count = 0;
-		mailDP.cleanOperation();
-		
-		List<String> emailList = jq.getList("$.emailList");
-		for (Object item : emailList) {
-			
-			Map<String,Object> map = (Map<String,Object>) item;
-	
-			String emailUUID = (String) map.get("emailUUID");
-			String langID = (String) map.get("langID");
-			String wrapper = (String) map.get("wrapper");
-			String sentFrom = (String) map.get("sentFrom");
-			String replyTo = (String) map.get("replyTo");
-			String copyTo = (String) map.get("copyTo");
-			String blindTo = (String) map.get("blindTo");
-			String subject = (String) map.get("subject");
-			String message = (String) map.get("message");
-	
-			String silkEmailID  = (String) mailDP.findItem("searchID", emailUUID+langID, "silkEmailID");
-	
-			if( silkEmailID==null ){
-				mailDP.setOperationAction(count,"insert");
-			}else{
-				mailDP.setOperationAction(count,"update");
-				mailDP.setOperationItem(count, "silkEmailID", silkEmailID);
-			}
-	
-			mailDP.setOperationItem(count, "emailUUID", emailUUID);
-			mailDP.setOperationItem(count, "langID", langID);
-			mailDP.setOperationItem(count, "wrapper", wrapper);
-			mailDP.setOperationItem(count, "sentFrom", sentFrom);
-			mailDP.setOperationItem(count, "replyTo", replyTo);
-			mailDP.setOperationItem(count, "copyTo", copyTo);
-			mailDP.setOperationItem(count, "blindTo", blindTo);
-			mailDP.setOperationItem(count, "subject", subject);
-			mailDP.setOperationItem(count, "message", message);
-				
-			count++;
-		}
-		mailDP.batch();
+	DataProvider mailDP = new DataProvider("/../silk/service/orm/silkEmail", session);
+
+	if( clean ){
+		mailDP.exec("cleanTemplate");
 	}
+
+	mailDP.select("clientList");
+
+	count = 0;
+	mailDP.cleanOperation();
+	
+	List<String> emailList = jq.getList("$.emailList");
+	for (Object item : emailList) {
+		
+		Map<String,Object> map = (Map<String,Object>) item;
+
+		String emailUUID = (String) map.get("emailUUID");
+		String langID = (String) map.get("langID");
+		String wrapper = (String) map.get("wrapper");
+		String sentFrom = (String) map.get("sentFrom");
+		String replyTo = (String) map.get("replyTo");
+		String copyTo = (String) map.get("copyTo");
+		String blindTo = (String) map.get("blindTo");
+		String subject = (String) map.get("subject");
+		String message = (String) map.get("message");
+		String indexValue = (String) map.get("indexValue");
+
+		String silkEmailID  = (String) mailDP.findItem("searchID", emailUUID+langID, "silkEmailID");
+
+		if( silkEmailID==null ){
+			mailDP.setOperationAction(count,"insert");
+		}else{
+			mailDP.setOperationAction(count,"update");
+			mailDP.setOperationItem(count, "silkEmailID", silkEmailID);
+		}
+
+		mailDP.setOperationItem(count, "emailUUID", emailUUID);
+		mailDP.setOperationItem(count, "langID", langID);
+		mailDP.setOperationItem(count, "wrapper", wrapper);
+		mailDP.setOperationItem(count, "sentFrom", sentFrom);
+		mailDP.setOperationItem(count, "replyTo", replyTo);
+		mailDP.setOperationItem(count, "copyTo", copyTo);
+		mailDP.setOperationItem(count, "blindTo", blindTo);
+		mailDP.setOperationItem(count, "subject", subject);
+		mailDP.setOperationItem(count, "message", message);
+		mailDP.setOperationItem(count, "indexValue", indexValue);
+			
+		count++;
+	}
+	mailDP.batch();
 			
 	/* ---------------------------------------------------------- */
 	result = "Completed";
