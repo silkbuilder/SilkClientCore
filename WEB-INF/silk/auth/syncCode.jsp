@@ -275,7 +275,7 @@
 	DataProvider mailDP = new DataProvider("/../silk/service/orm/silkEmail", session);
 
 	if( clean ){
-		mailDP.exec("cleanTemplate");
+		mailDP.exec("cleanClient");
 	}
 
 	mailDP.select("clientList");
