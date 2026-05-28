@@ -4,31 +4,53 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 */
 
 body {
+	
 	/* Font */
-	font-family: Avenir, sans-serif, Arial, Verdana, "Trebuchet MS";
-	font-size: 12px;
-
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 1em;
+	font-weight: 300;
+	
 	/* Text color */
 	color: black;
-
+	
 	/* Remove the background color to make it transparent */
 	background-color: #fff;
-
-	margin: 1.5cm;
-
-	counter-reset: h2counter;
-	counter-reset: h3counter;
-	counter-reset: h4counter;
+	
+	margin: 5px;
+	
 	counter-reset: codeLineCounter;
-
+	
 }
 
 .cke_editable {
-	font-size: 13px;
-	line-height: 1.6;
-
 	/* Fix for missing scrollbars with RTL texts. (#10488) */
 	word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+h4 {
+	font-size: 1.4em;
+}
+
+h5 {
+	font-size: 1.2em;
 }
 
 blockquote {
@@ -53,18 +75,12 @@ blockquote {
 }
 
 p {
-	font-size: 12px !important;
-	font-weight: 250;
-
+	margin-block-start: 0px;
+	margin-inline-start: 0px;
 }
 
-li {
-	font-size: 12px !important;
-	font-weight: 250;
-	/*
-	margin: 7px 0px;
-	line-height: 13pt;
-	*/
+strong {
+	font-weight: 700;
 }
 
 a {
@@ -80,64 +96,7 @@ dl {
 	padding: 0 40px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-top: 20px;
-	margin-bottom: 0px;
-	font-weight: 500;
-}
 
-h1 {
-	font-size: 2.2em;
-	text-align: center;
-	font-weight: 500;
-	margin-bottom: 30px;
-	counter-reset: h2counter;
-}
-
-h2 {
-	font-size: 1.6em;
-	counter-reset: h3counter;
-}
-
-h2:before {
-	content: counter(h2counter) ".\0000a0\0000a0";
-	counter-increment: h2counter;
-}
-
-h3 {
-	font-size: 1.4em;
-	counter-reset: h4counter;
-}
-
-h3:before {
-	content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
-	counter-increment: h3counter;
-}
-
-h4 {
-	font-size: 1.2em;
-}
-
-h4:before {
-	content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
-	counter-increment: h4counter;
-}
-
-h2+p,
-h3+p,
-h4+p {
-	margin-top: 2px;
-}
-
-h2+h3,
-h3+h4 {
-	margin-top: 4px;
-}
 
 hr {
 	border: 0px;
@@ -165,6 +124,7 @@ pre {
 	/* IE7 */
 	-moz-tab-size: 4;
 	tab-size: 4;
+	font-size: 1.1em;
 }
 
 .marker {
@@ -208,47 +168,44 @@ tr {
 	page-break-after: auto;
 }
 
-th,
-td {
+th, td {
 	border: 1px solid black;
 }
 
 th {
 	padding: 2px 2px;
 	font-weight: 500;
-	font-size: 12px;
+
 }
 
 td {
-	padding: 0px 6px;
+	padding: 6px 6px;
 }
 
-td ol,
-td ul {
+td ol, td ul {
 	margin: 0px;
-	font-size: 12px !important;
+	padding: 0px 0px 0px 25px;
 }
 
 td li {
-	font-size: 12px !important;
-	line-height: 10px;
 }
 
 
-td p {
+td p:first-of-type {
 	padding: 0px;
-	margin: 4px 0px;
-	font-size: 12px  !important;
-	line-height: 13px !important;
+	margin: 0px;
+}
+
+td p {
+	padding: 10px 0px 0px 0px;
+	margin: 0px;
 }
 
 .code-block {
 	counter-reset: codeLineCounter;
 	font-family: monospace;
-	font-size: 12px !important;
-	line-height: 1.3em;
+	font-size: 1.1em;
 	font-weight: 100;
-	color: #666;
 }
 
 .code-line:nth-child(odd) {
@@ -263,42 +220,6 @@ td p {
 	margin-left: 0;
 	margin-right: 10px;
 	text-align: right;
-}
-
-@media print {
-
-	body {
-		cursor: none;
-
-		selector {
-			cursor: none;
-		}
-	}
-
-	.code-line:before {
-		background-color: lightgray;
-	}
-
-	h1 {
-		font-size: 1.5em !important;
-	}
-
-	h2 {
-		font-size: 1.3em !important;
-	}
-
-	h3 {
-		font-size: 1.2em !important;
-	}
-
-	h4 {
-		font-size: 1.1em !important;
-	}
-
-	p,
-	li {
-		font-size: 1em !important;
-	}
-
-
+	padding: 2px;
+	background-color: lightgray;
 }

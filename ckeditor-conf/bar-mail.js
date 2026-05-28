@@ -40,7 +40,7 @@ CKEDITOR.editorConfig = function( config ) {
 	}
 	
 	var date = new Date()
-	config.contentsCss = url+"/ckeditor-conf/print.css?a="+date.getTime();
+	config.contentsCss = url+"/ckeditor-conf/edit.css?a="+date.getTime();
 	
 };
 

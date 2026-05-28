@@ -15,7 +15,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'document', groups: [ 'mode', 'doctools', 'document' ] }
 	];
 	
-	config.removeButtons = 'Cut,Copy,Paste,PasteText,PasteFromWord,SelectAll,Scayt,Preview,NewPage,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Undo,Redo,Strike,CreateDiv,BidiLtr,BidiRtl,Language,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,FontSize,Font,About,Outdent,Indent,Subscript,Superscript,Blockquote,Anchor,BGColor';
+	config.removeButtons = 'Anchor,Cut,Copy,Paste,PasteText,PasteFromWord,SelectAll,Scayt,Preview,NewPage,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Undo,Redo,Strike,CreateDiv,BidiLtr,BidiRtl,Language,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,FontSize,Font,About,Outdent,Indent,Subscript,Superscript,Blockquote,Save,Print';
 	config.removePlugins = 'elementspath';
 	config.resize_enabled = false;
 	config.basicEntities = false;
