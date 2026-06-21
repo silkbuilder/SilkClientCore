@@ -10,7 +10,6 @@
 %><%
 	
 	int returnValue = 0;
-	String sessionOrm = "/../silk/service/orm/silkSession";
 
 	String mode = request.getParameter("mode");
 	if( mode==null ) mode="beat";

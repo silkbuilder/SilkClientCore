@@ -1,5 +1,5 @@
 .silk-html {
-	height: 100vh;
+	height: 100dvh;
 }
 
 body:has(.silk-html) {
