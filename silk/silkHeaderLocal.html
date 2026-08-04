@@ -15,7 +15,7 @@
 <link href="{contextPath}/resources/fontawesome6/css/all.min.css?loadTime={loadTime}" rel="stylesheet" />
 
 <!-- jQuery Local  -->
-<script src="{contextPath}/resources/jquery-3.7.1.min.js?loadTime={loadTime}"></script>
+<script src="{contextPath}/resources/jquery-4.0.0.min.js?loadTime={loadTime}"></script>
 
 <!-- Bootstrap Local -->
 <script src="{contextPath}/resources/bootstrap/bootstrap.bundle.min.js?loadTime={loadTime}"></script>
@@ -59,8 +59,16 @@
 <!-- End -->
 
 <!-- HTML-Editor input:html -->
-<script src="{contextPath}/resources/ckeditor/ckeditor.js?loadTime={loadTime}"></script>
-<script>CKEDITOR.disableAutoInline = true;</script>
+<script src="{contextPath}/resources/quill/quill.js?loadTime={loadTime}"></script>
+<link href="{contextPath}/resources/quill/quill.snow.css?loadTime={loadTime}" rel="stylesheet" />
+<link href="{contextPath}/resources/quill/quill.bubble.css?loadTime={loadTime}" rel="stylesheet" />
+<link href="{contextPath}/resources/quill/quill-table-better.css?loadTime={loadTime}" rel="stylesheet" />
+<script src="{contextPath}/resources/quill/quill-table-better.js?loadTime={loadTime}"></script>
+<script>
+	Quill.register({
+		'modules/table-better': QuillTableBetter
+	}, true);
+</script>
 <!-- End -->
 
 <!-- Chart comp:chart -->

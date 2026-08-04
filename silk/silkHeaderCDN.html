@@ -64,8 +64,16 @@
 <!-- End -->
 
 <!-- HTML-Editor input:html -->
-<script src="{contextPath}/resources/ckeditor/ckeditor.js?loadTime={loadTime}"></script>
-<script>CKEDITOR.disableAutoInline = true;</script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js?loadTime={loadTime}"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css?loadTime={loadTime}" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.bubble.css?loadTime={loadTime}" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/quill-table-better@1/dist/quill-table-better.css?loadTime={loadTime}" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/quill-table-better@1/dist/quill-table-better.js?loadTime={loadTime}"></script>
+<script>
+	Quill.register({
+		'modules/table-better': QuillTableBetter
+	}, true);
+</script>
 <!-- End -->
 
 <!-- HTML-Editor input:html -->

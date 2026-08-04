@@ -443,6 +443,7 @@ input[type="checkbox"] {
 
 .silk-table-top-header {
 	top: 0px;
+	padding: 4px;
 }
 
 .silk-table-data td {
@@ -541,13 +542,12 @@ input[type="checkbox"] {
 }
 
 .silk-button-icon {
-	margin-left: 4px;
-	margin-right: 4px;	
+	margin: 2px 4px;
 }
 
 .silk-button-label {
 	margin-left: 2px;
-	margin-right: 2px;	
+	margin-right: 5px;
 }
 
 .silk-page .silk-navbar-button,
@@ -657,6 +657,22 @@ input[type="checkbox"] {
 	word-break: break-word;
 }
 
+/* Sweetalert 2 ================================================================== */
+
+.custom-swal-popup {
+  background-color: var(--bs-body-bg) !important;   /* Dark slate background */
+  color: var(--bs-body-color) !important;              /* Light text color */
+}
+
+.custom-swal-title {
+  color: var(--bs-body-color) !important;
+  font-weight: bold;
+}
+
+.custom-swal-text {
+  color: var(--bs-body-color) !important;
+}
+
 /* Code Editor ================================================================== */
 
 .cm-content {
@@ -675,6 +691,245 @@ input[type="checkbox"] {
 	-ms-user-select: none;
 	/* Internet Explorer/Edge */
 	user-select: none;
-	/* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+	/* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+
+/* Quill Editor =============================================================== */
+
+/* fixing icon positions */
+.ql-toolbar.ql-snow .ql-picker-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ql-toolbar.ql-snow .ql-picker-label svg {
+  position: static;   /* cancel Quill's absolute/top:50%/margin-top hack */
+  margin-top: 0;
+}
+/* End - fixing icon positions */
+
+.ql-editor {
+	font-size: var(--bs-body-font-size);
+	padding: 0px;
+}
+
+.ql-toolbar.ql-snow {
+	padding: 2px;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.ql-container {
+	border: 0px !important;
+}
+
+.ql-editor p, .ql-editor ol, .ql-editor pre, .ql-editor blockquote,
+.ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {
+	margin: 10px;
+	padding: 0px;
+}
+
+.ql-editor table p, .ql-editor table ol, 
+.ql-editor table h1, .ql-editor table h2, .ql-editor table h3, .ql-editor table h4, .ql-editor table h5, .ql-editor table h6 {
+	margin: 5px;
+}
+
+.ql-fullscreen {
+	position: relative; /* establish a positioning context */
+}
+
+.ql-fullscreen::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 18px;
+	height: 18px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23444' d='M5 5h5v2H7v3H5V5zm14 0v5h-2V7h-3V5h5zM5 19v-5h2v3h3v2H5zm14 0h-5v-2h3v-3h2v5z'/></svg>");
+}
+
+.ql-fullscreen:hover::after {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2306c' d='M5 5h5v2H7v3H5V5zm14 0v5h-2V7h-3V5h5zM5 19v-5h2v3h3v2H5zm14 0h-5v-2h3v-3h2v5z'/%3E%3C/svg%3E");
+}
+
+/* Full-screen mode overrides */
+
+.silk-input-type-html {
+	padding: 0px !important;
+}
+
+.silk-input-type-html.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	max-width: 100%;
+	height: 100vh !important;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+}
+
+.silk-input-type-html.fullscreen .ql-container {
+	flex-grow: 1;
+	height: calc(100% - 30px) !important;
+}
+
+/**
+ * Quill (Snow theme) toolbar icon recoloring
+ * ============================================================================
+ * Icons are inline SVGs whose paths are tagged with .ql-stroke and/or
+ * .ql-fill. Recolor by overriding stroke/fill on those classes rather than
+ * relying on `color` inheritance, since Quill's own CSS sets stroke/fill
+ * explicitly.
+ *
+ * Load this AFTER quill.snow.css, or increase specificity, since none of
+ * Quill's own rules use !important.
+ *
+ * To scope these rules to a single editor instance on a page with multiple
+ * QuillEditor instances, prefix every selector below with that instance's
+ * wrapper id/class, e.g.:
+ *   #sql-editor-wrapper .ql-toolbar .ql-stroke { ... }
+ * instead of the global .ql-toolbar.ql-snow used here.
+ */
+
+/* ---------------------------------------------------------------------- */
+/* 1. Plain toggle buttons (bold, italic, link, image, lists, table, etc.) */
+/* ---------------------------------------------------------------------- */
+
+/* Default (inactive) icon color */
+.ql-toolbar.ql-snow .ql-stroke {
+	stroke: var(--bs-body-color);
+}
+.ql-toolbar.ql-snow .ql-fill {
+	fill: var(--bs-body-color);
+}
+
+/* Hover state */
+.ql-toolbar.ql-snow button:hover .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow button:hover .ql-fill {
+	fill: var(--bs-primary);
+}
+
+/* Active/toggled-on state (e.g. bold currently applied to the selection) */
+.ql-toolbar.ql-snow button.ql-active .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow button.ql-active .ql-fill {
+	fill: var(--bs-primary);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 2. Picker label (the visible closed-state icon, e.g. the align button) */
+/* ---------------------------------------------------------------------- */
+.ql-toolbar.ql-snow .ql-picker-label, .ql-toolbar.ql-snow .ql-picker-item{
+	color: var(--bs-body-color);
+}
+
+/* Default (inactive) icon color — picker markup lives in a <span>,      */
+/* not a <button>, so it needs its own selector separate from section 1. */
+.ql-toolbar.ql-snow .ql-picker-label .ql-stroke {
+	stroke: var(--bs-body-color);
+}
+.ql-toolbar.ql-snow .ql-picker-label .ql-fill {
+	fill: var(--bs-body-color);
+}
+
+/* Hover, and while the dropdown is open (Quill adds .ql-expanded to the   */
+/* parent .ql-picker while its .ql-picker-options list is showing)        */
+.ql-toolbar.ql-snow .ql-picker-label:hover .ql-stroke,
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow .ql-picker-label:hover .ql-fill,
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
+	fill: rvar(--bs-primary);
+}
+
+/* Persistent highlight once a non-default value is selected, so the icon */
+/* stays colored after the dropdown closes (not just while hovered/open). */
+/* data-value="" corresponds to Quill's default left-align, so this only */
+/* fires for center/right/justify. VERIFY in devtools that your Quill     */
+/* version actually sets data-value on .ql-picker-label — this attribute  */
+/* name/behavior has shifted slightly between Quill 1.x and 2.x.          */
+.ql-toolbar.ql-snow .ql-picker.ql-align .ql-picker-label[data-value]:not([data-value=""]) .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow .ql-picker.ql-align .ql-picker-label[data-value]:not([data-value=""]) .ql-fill {
+	fill: var(--bs-primary);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* 3. Picker dropdown list items (the expanded options, e.g. align's       */
+/*    left/center/right/justify list)                                     */
+/* ---------------------------------------------------------------------- */
+
+/* Default (inactive) icon color inside the dropdown */
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item .ql-stroke {
+	stroke: var(--bs-body-color);
+}
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item .ql-fill {
+	fill: var(--bs-body-color);
+}
+
+/* Hover on a dropdown item */
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item:hover .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item:hover .ql-fill {
+	fill: var(--bs-primary);
+}
+
+/* The currently-selected alignment, highlighted/checked in the open list */
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item.ql-selected .ql-stroke {
+	stroke: var(--bs-primary);
+}
+.ql-toolbar.ql-snow .ql-picker-options .ql-picker-item.ql-selected .ql-fill {
+	fill: var(--bs-primary);
+}
+
+.ql-picker-options {
+	background-color: var(--bs-body-bg) !important;
+}
+
+/*
+ * Image link dialog
+ */
+.ql-image-modal {
+	color: var(--bs-dark);
+}
+
+/*
+ * Table related
+ */
+
+.ql-editor td {
+	border-color: var(--bs-border-color) !important;
+	border-style: dashed;
+}
+
+.ql-toolbar.ql-snow .ql-table-better path{
+	fill: var(--bs-body-color) !important;
+}
+
+.ql-toolbar.ql-snow .ql-table-button-disabled {
+	background-color: var(--bs-bg-color) !important;
+}
+
+.ql-table-properties-form, .ql-table-dropdown-list {
+	color: var(--bs-black) !important;
+}
+
+
+
